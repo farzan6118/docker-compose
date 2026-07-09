@@ -1,0 +1,21 @@
+services:
+  mattermost:
+    image: mattermost/mattermost-team-edition:latest
+    restart: unless-stopped
+    ports:
+      - "18065:8065"
+    environment:
+      MM_SQLSETTINGS_DRIVERNAME: postgres
+      MM_SQLSETTINGS_DATASOURCE: postgres://user:pass@postgres:5432/mattermost?sslmode=disable
+    volumes:
+      - mattermost_data:/mattermost/data
+    networks:
+      - postgres_shared_network
+
+volumes:
+  mattermost_data:
+
+
+networks:
+  postgres_shared_network:
+    external: true

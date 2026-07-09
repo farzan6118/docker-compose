@@ -1,0 +1,22 @@
+services:
+  redisinsight:
+    container_name: redisinsight
+    image: redis/redisinsight:3.6.0
+
+    ports:
+      - "5540:5540"
+
+    volumes:
+      - redisinsight_data:/data
+
+    networks:
+      - redis_shared_network
+
+    restart: unless-stopped
+
+volumes:
+  redisinsight_data:
+
+networks:
+  redis_shared_network:
+    external: true
