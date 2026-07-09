@@ -2,14 +2,13 @@ services:
   kafka:
     container_name: kafka
     image: soldevelo/kafka:3.9.0
+
     environment:
-      # Node ID and Roles
       KAFKA_KRAFT_CLUSTER_ID: my-cluster-id
       KAFKA_CFG_NODE_ID: 1
       KAFKA_CFG_PROCESS_ROLES: controller,broker
       KAFKA_CFG_CONTROLLER_QUORUM_VOTERS: 1@kafka:9093
 
-      # Kafka Listeners
       KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,PLAINTEXT_EXTERNAL://:29092,CONTROLLER://:9093
       KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_EXTERNAL://localhost:29092
       KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT,PLAINTEXT_EXTERNAL:PLAINTEXT
@@ -17,7 +16,6 @@ services:
       KAFKA_CFG_CONTROLLER_LISTENER_NAMES: CONTROLLER
 
     ports:
-      - "9092:9092"
       - "29092:29092"
 
     volumes:
@@ -25,19 +23,10 @@ services:
 
     restart: unless-stopped
 
-  # ---------- Kafka UI ------------ 
-  kafka_ui:
-    container_name: kafka_ui
-    image: provectuslabs/kafka-ui:v0.7.2
-    environment:
-      KAFKA_CLUSTERS_0_NAME: "local"
-      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
-    ports:
-      - "19093:8080"
-    restart: unless-stopped
-    depends_on:
-      - kafka
-
 volumes:
   kafka_data:
-    driver: local
+
+networks:
+  default:
+    external: true
+    name: infrastructure

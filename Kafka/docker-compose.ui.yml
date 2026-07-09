@@ -1,0 +1,18 @@
+services:
+  kafka_ui:
+    container_name: kafka_ui
+    image: provectuslabs/kafka-ui:v0.7.2
+
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092
+
+    ports:
+      - "19093:8080"
+
+    restart: unless-stopped
+
+networks:
+  default:
+    external: true
+    name: infrastructure
