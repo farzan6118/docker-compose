@@ -1,18 +1,12 @@
-version: '3.9'
-
 services:
   mattermost:
     image: mattermost/mattermost-team-edition:latest
-    container_name: mattermost-app
     restart: unless-stopped
     ports:
-      - "8065:8065"
+      - "18065:8065"
     environment:
-      MM_USERNAME: mmuser            
-      MM_PASSWORD: mmsecret         
-      MM_DBNAME: mattermost          
       MM_SQLSETTINGS_DRIVERNAME: postgres
-      MM_SQLSETTINGS_DATASOURCE: postgres://mmuser:mmsecret@your-postgres-host:5432/mattermost?sslmode=disable
+      MM_SQLSETTINGS_DATASOURCE: postgres://user:pass@postgres:5432/mattermost?sslmode=disable
     volumes:
       - mattermost_data:/mattermost/data
     networks:
@@ -20,6 +14,7 @@ services:
 
 volumes:
   mattermost_data:
+
 
 networks:
   postgres_shared_network:
