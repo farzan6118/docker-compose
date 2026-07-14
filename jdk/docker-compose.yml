@@ -1,0 +1,16 @@
+services:
+  java:
+    container_name: java
+    image: eclipse-temurin:21-jdk
+    tty: true
+    stdin_open: true
+    working_dir: /workspace
+    volumes:
+      - ./:/workspace
+    networks:
+      - shared_network
+    restart: unless-stopped
+
+networks:
+  shared_network:
+    external: true

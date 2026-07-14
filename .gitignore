@@ -1,47 +1,48 @@
 # ----------------------------
 # Authentication / Keycloak
 # ----------------------------
-Keycloak/pgadmin_data/
-Keycloak/postgres_data/
+keycloak/pgadmin_data/
+keycloak/postgres_data/
 
 # ----------------------------
 # Databases
 # ----------------------------
-Cassandra/cassandra_data/
-MongoDB/mongo_data/
-MySQL/mysql_data/
-Neo4j/neo4j_conf/
-Neo4j/neo4j_data/
-Neo4j/neo4j_logs/
-Neo4j/neo4j_plugins/
-PostgreSQL/postgres_data/
-Redis/redis_data/
+
+cassandra/cassandra_data/
+mongodb/mongo_data/
+mysql/mysql_data/
+neo4j/neo4j_conf/
+neo4j/neo4j_data/
+neo4j/neo4j_logs/
+neo4j/neo4j_plugins/
+postgres/postgres_data/
+redis/redis_data/
 
 # PostgreSQL internal files (never commit)
-PostgreSQL/postgres_data/global/pg_control
-PostgreSQL/postgres_data/pg_subtrans/0000
+postgres/postgres_data/global/pg_control
+postgres/postgres_data/pg_subtrans/0000
 
 # ----------------------------
 # Infrastructure
 # ----------------------------
-Vault/vault_data/
+vault/vault_data/
 
 # ----------------------------
 # Messaging
 # ----------------------------
-Kafka/kafka_data/
-Kafka/zookeeper_data/
-RabbitMQ/rabbitmq_data/
+kafka/kafka_data/
+kafka/zookeeper_data/
+rabbitmq/rabbitmq_data/
 
 # ----------------------------
 # Object Storage
 # ----------------------------
-MinIO/templates/
+minio/templates/
 
 # ----------------------------
 # Observability
 # ----------------------------
-Zipkin/
+zipkin/
 
 # ----------------------------
 # Orchestration

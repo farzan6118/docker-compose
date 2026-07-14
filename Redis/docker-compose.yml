@@ -1,23 +1,41 @@
 services:
   redis:
-    container_name: Redis
-    image: redis:8.2.3-alpine3.22
+    container_name: redis
+    image: redis:8.8.0-alpine3.23
     ports:
       - "6379:6379"
     volumes:
       - redis_data:/data
+      - ./redis.conf:/usr/local/etc/redis/redis.conf:ro
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
     networks:
-      - shared_network
+      - redis_shared_network
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "redis-cli", "ping" ]
+      test: [ "CMD", "redis-cli", "--user", "user", "-a", "pass", "ping" ]
       interval: 30s
       timeout: 10s
       retries: 5
 
+  redisinsight:
+    container_name: redisinsight
+    image: redis/redisinsight:3.6.0
+    ports:
+      - "5540:5540"
+    volumes:
+      - redisinsight_data:/data
+    networks:
+      - redis_shared_network
+    restart: unless-stopped
+    depends_on:
+      redis:
+        condition: service_healthy
+
 volumes:
   redis_data:
+  redisinsight_data:
 
 networks:
-  shared_network:
+  redis_shared_network:
+    name: redis_shared_network
     driver: bridge
