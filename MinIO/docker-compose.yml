@@ -8,7 +8,7 @@ services:
     image: minio/minio:RELEASE.2025-04-22T22-12-26Z
     
     networks:
-      - minio_net
+      - shared_network
     ports:
       - 9000:9000
       - 9001:9001
@@ -17,4 +17,6 @@ services:
       - ~/minio/data:/data
 
 networks:
-  minio_net:
+  shared_network:
+    external: true
+    name: shared_network

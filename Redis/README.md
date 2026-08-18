@@ -1,2 +1,2 @@
 ## docker-compose
-redis:8.2.3-alpine3.22
+redis:8.8.0-alpine3.23

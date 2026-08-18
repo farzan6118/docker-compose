@@ -20,6 +20,9 @@ services:
       - "9092:9092"
       - "29092:29092"
 
+    networks:
+      - shared_network
+
     volumes:
       - kafka_data:/bitnami/kafka/data
 
@@ -38,6 +41,14 @@ services:
     depends_on:
       - kafka
 
+    networks:
+      - shared_network
+
 volumes:
   kafka_data:
     driver: local
+
+networks:
+  shared_network:
+    external: true
+    name: shared_network

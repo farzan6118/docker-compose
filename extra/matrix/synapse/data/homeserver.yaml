@@ -1,0 +1,27 @@
+server_name: "chat.company.local"
+public_baseurl: "http://chat.company.local:18008/"
+report_stats: false   # برای رفع خطای گزارش آمار
+media_store_path: "/data/media_store"
+
+
+database:
+  name: psycopg2
+  args:
+    user: user          # مطابق postgres موجود شما
+    password: pass      # مطابق postgres موجود شما
+    database: synapse
+    host: postgresql    # نام سرویس PostgreSQL در docker-compose
+    port: 5432
+
+enable_registration: false
+registration_shared_secret: "SUPER_SECRET_KEY"
+
+listeners:
+  - port: 8008
+    tls: false
+    type: http
+    x_forwarded: true
+    resources:
+      - names: [client]   # federation برای internal غیرفعال شده
+
+federation_enabled: false

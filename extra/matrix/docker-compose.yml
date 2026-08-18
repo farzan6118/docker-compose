@@ -1,0 +1,29 @@
+services:
+  synapse:
+    image: matrixdotorg/synapse:latest
+    container_name: matrix-synapse
+    restart: unless-stopped
+    environment:
+      SYNAPSE_SERVER_NAME: chat.company.local
+      SYNAPSE_REPORT_STATS: "no"
+    volumes:
+      - ./synapse/data:/data
+    ports:
+      - "18008:8008"
+    networks:
+      - postgres_shared_network
+
+  element:
+    image: vectorim/element-web:latest
+    container_name: element-web
+    restart: unless-stopped
+    volumes:
+      - ./element/config.json:/app/config.json
+    ports:
+      - "18080:80"
+    networks:
+      - postgres_shared_network
+
+networks:
+  postgres_shared_network:
+    external: true

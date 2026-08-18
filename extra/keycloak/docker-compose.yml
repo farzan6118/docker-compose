@@ -1,0 +1,28 @@
+services:
+  keycloak:
+    container_name: keycloak
+    image: quay.io/keycloak/keycloak:26.7.1
+    command: start-dev
+    environment:
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgresql
+      KC_DB_URL_DATABASE: keycloak
+      KC_DB_USERNAME: user
+      KC_DB_PASSWORD: pass
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_FEATURES: account-api,token-exchange,client-policies
+    ports:
+      - "8180:8080"
+    restart: unless-stopped
+    networks:
+      - postgres_shared_network
+    volumes:
+      # فولدر Theme سفارشی
+      - ./themes:/opt/keycloak/themes
+      # فولدر Custom SPI ها
+      - ./spi:/opt/keycloak/providers
+
+networks:
+  postgres_shared_network:
+    external: true

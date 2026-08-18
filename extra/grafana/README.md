@@ -1,2 +1,2 @@
 ## docker-compose
-zipkin
+grafana/loki:2.9.0

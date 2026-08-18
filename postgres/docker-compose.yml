@@ -11,7 +11,7 @@ services:
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
     networks:
-      - postgres_shared_network
+      - shared_network
     restart: unless-stopped
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U user" ]
@@ -24,6 +24,6 @@ volumes:
 
 
 networks:
-  postgres_shared_network:
-    name: postgres_shared_network
+  shared_network:
+    name: shared_network
     driver: bridge

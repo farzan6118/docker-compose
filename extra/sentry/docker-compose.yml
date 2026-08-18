@@ -1,0 +1,28 @@
+services:
+  sentry:
+    image: getsentry/sentry:latest
+    environment:
+      SENTRY_SECRET_KEY: admin
+      SENTRY_DEVELOPMENT_MODE: '1'
+      SENTRY_REDIS_HOST: redis
+      SENTRY_DB_USER: user
+      SENTRY_DB_PASSWORD: pass
+      SENTRY_DB_NAME: sentry
+      SENTRY_DB_HOST: postgres
+    ports:
+      - "9009:9000"
+    restart: unless-stopped
+    networks:
+      - sentry_net
+      - redis_shared_network
+      - postgres_shared_network
+
+networks:
+  sentry_net:
+    driver: bridge
+
+  redis_shared_network:
+    external: true
+
+  postgres_shared_network:
+    external: true

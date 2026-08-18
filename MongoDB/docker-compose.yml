@@ -16,13 +16,13 @@ services:
       timeout: 10s
       retries: 5
     networks:
-      - mongodb_shared_network
+      - shared_network
 
 volumes:
   mongo_data:
 
 
 networks:
-  mongodb_shared_network:
-    name: mongodb_shared_network
-    driver: bridge
+  shared_network:
+    external: true
+    name: shared_network

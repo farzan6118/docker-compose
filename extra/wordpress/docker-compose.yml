@@ -1,0 +1,29 @@
+services:
+  wordpress:
+    container_name: wordpress_app
+    image: wordpress:6.8.3-php8.1-apache
+    ports:
+      - "8080:80"
+    environment:
+      WORDPRESS_DB_HOST: mysql:3306
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DB_NAME: wp_db
+      WORDPRESS_TABLE_PREFIX: wp_
+    volumes:
+      - ./wordpress_data:/var/www/html
+    networks:
+      - mysql_shared_network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  wordpress_data:
+
+networks:
+  mysql_shared_network:
+    external: true

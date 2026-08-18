@@ -1,7 +1,7 @@
 services:
   keycloak:
     container_name: keycloak
-    image: quay.io/keycloak/keycloak:26.4.2
+    image: quay.io/keycloak/keycloak:26.7.1
     command: start-dev
     environment:
       KC_DB: postgres
@@ -16,7 +16,7 @@ services:
       - "8180:8080"
     restart: unless-stopped
     networks:
-      - postgres_shared_network
+      - shared_network
     volumes:
       # فولدر Theme سفارشی
       - ./themes:/opt/keycloak/themes
@@ -24,5 +24,6 @@ services:
       - ./spi:/opt/keycloak/providers
 
 networks:
-  postgres_shared_network:
+  shared_network:
     external: true
+    name: shared_network

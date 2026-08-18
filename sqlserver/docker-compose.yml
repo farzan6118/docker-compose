@@ -10,6 +10,13 @@ services:
     volumes:
       - sqlserver_data:/var/opt/mssql
     restart: unless-stopped
+    networks:
+      - shared_network
 
 volumes:
   sqlserver_data:
+
+networks:
+  shared_network:
+    external: true
+    name: shared_network
