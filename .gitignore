@@ -7,7 +7,9 @@ keycloak/postgres_data/
 # ----------------------------
 # Databases
 # ----------------------------
-
+minio/minio_data/
+keycloak/spi/
+keycloak/themes/
 cassandra/cassandra_data/
 mongodb/mongo_data/
 mysql/mysql_data/
