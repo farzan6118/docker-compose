@@ -1,58 +1,144 @@
-# ----------------------------
-# Authentication / Keycloak
-# ----------------------------
-keycloak/pgadmin_data/
-keycloak/postgres_data/
+# ============================================================
+# Docker / Local Runtime Data
+# ============================================================
 
 # ----------------------------
-# Databases
+# PostgreSQL
 # ----------------------------
-minio/minio_data/
-keycloak/spi/
-keycloak/themes/
-cassandra/cassandra_data/
-mongodb/mongo_data/
+postgres/postgres_data/
+
+# PostgreSQL internal files
+postgres/postgres_data/global/pg_control
+postgres/postgres_data/pg_subtrans/0000
+
+
+# ----------------------------
+# MySQL
+# ----------------------------
 mysql/mysql_data/
+
+
+# ----------------------------
+# MongoDB
+# ----------------------------
+mongodb/mongo_data/
+
+
+# ----------------------------
+# Cassandra
+# ----------------------------
+cassandra/cassandra_data/
+
+
+# ----------------------------
+# Redis
+# ----------------------------
+redis/redis_data/
+
+
+# ----------------------------
+# Neo4j
+# ----------------------------
 neo4j/neo4j_conf/
 neo4j/neo4j_data/
 neo4j/neo4j_logs/
 neo4j/neo4j_plugins/
-postgres/postgres_data/
-redis/redis_data/
 
-# PostgreSQL internal files (never commit)
-postgres/postgres_data/global/pg_control
-postgres/postgres_data/pg_subtrans/0000
 
 # ----------------------------
-# Infrastructure
+# Keycloak
+# ----------------------------
+keycloak/pgadmin_data/
+keycloak/postgres_data/
+
+# Uncomment only if these are generated files
+# keycloak/spi/
+# keycloak/themes/
+
+
+# ----------------------------
+# MinIO
+# ----------------------------
+minio/minio_data/
+minio/templates/
+
+
+# ----------------------------
+# Vault
 # ----------------------------
 vault/vault_data/
 
+
 # ----------------------------
-# Messaging
+# Kafka
 # ----------------------------
 kafka/kafka_data/
 kafka/zookeeper_data/
+
+
+# ----------------------------
+# RabbitMQ
+# ----------------------------
 rabbitmq/rabbitmq_data/
 
-# ----------------------------
-# Object Storage
-# ----------------------------
-minio/templates/
 
 # ----------------------------
-# Observability
+# Zipkin
 # ----------------------------
 zipkin/
 
+
 # ----------------------------
-# Orchestration
+# n8n
 # ----------------------------
 n8n/n8n-data/
 
+
 # ----------------------------
-# Search & Analytics
+# Elasticsearch
 # ----------------------------
 elasticstack/Elasticsearch/elastic_data/
 elasticstack/Elasticsearch/elastic_config/
+
+
+# ============================================================
+# IDE
+# ============================================================
+
+.idea/
+*.iml
+.vscode/
+
+
+# ============================================================
+# Build Output
+# ============================================================
+
+target/
+build/
+out/
+
+
+# ============================================================
+# OS
+# ============================================================
+
+.DS_Store
+Thumbs.db
+
+
+# ============================================================
+# Logs
+# ============================================================
+
+*.log
+logs/
+
+
+# ============================================================
+# Environment / Secrets
+# ============================================================
+
+.env
+.env.*
+!.env.example
