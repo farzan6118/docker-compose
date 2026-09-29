@@ -1,11 +1,11 @@
-services:
+﻿services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: sqlserver
     ports:
       - "1433:1433"
     environment:
-      SA_PASSWORD: "YourStrong!Passw0rd"
+      SA_PASSWORD: ${SA_PASSWORD:?Set SA_PASSWORD in sqlserver/.env}
       ACCEPT_EULA: "Y"
     volumes:
       - sqlserver_data:/var/opt/mssql

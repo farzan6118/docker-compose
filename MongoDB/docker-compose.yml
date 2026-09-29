@@ -1,4 +1,4 @@
-services:
+﻿services:
   mongo:
     container_name: mongodb
     image: mongo:8.0.10
@@ -11,7 +11,9 @@ services:
       - mongo_data:/data/db
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD", "powershell", "-command", "try { (Test-NetConnection -ComputerName localhost -Port 27017).TcpTestSucceeded } catch { exit 1 }" ]
+      test:
+        - CMD-SHELL
+        - 'mongosh --quiet --host localhost -u "$$MONGO_INITDB_ROOT_USERNAME" -p "$$MONGO_INITDB_ROOT_PASSWORD" --authenticationDatabase admin --eval "quit(db.adminCommand({ ping: 1 }).ok ? 0 : 1)"'
       interval: 30s
       timeout: 10s
       retries: 5
@@ -20,7 +22,6 @@ services:
 
 volumes:
   mongo_data:
-
 
 networks:
   shared_network:

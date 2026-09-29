@@ -1,0 +1,13 @@
+﻿---
+description: Review and validate Compose and documentation changes
+alwaysApply: true
+---
+
+# Review Expectations
+
+- Before editing, inspect the target Compose file, its README, relevant `.env`/`.env.example`, and any provider stack that supplies an external network or service.
+- Validate changed Compose files with `docker compose -f <path> config`; missing required variables and external resources may need to be assessed in context.
+- Review the resolved service images, port mappings, volume mounts, environment interpolation, networks, and healthcheck command for errors.
+- Do not start containers just to validate syntax. Starting a stack can expose ports, create persistent state, or alter data.
+- Update the stack README when its behavior, requirements, ports, credentials, data persistence, or startup steps change.
+- Do not claim production readiness without addressing authentication, TLS, backups, resource limits, and network exposure.

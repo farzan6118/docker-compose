@@ -1,0 +1,13 @@
+﻿---
+description: Architecture and boundaries for this collection of independent Docker Compose stacks
+alwaysApply: true
+---
+
+# Compose Collection Architecture
+
+- Treat each directory containing a Compose file as a separate project. Do not add an implicit root stack or make unrelated stacks start together.
+- Keep a stack self-contained unless it intentionally consumes a shared service. Document every required external network and provider stack in its README.
+- Compose service DNS names are the stable in-network connection targets. Do not use `localhost` for a dependency running in another container.
+- Use `depends_on` for startup ordering only. Use health-based conditions where readiness is required and the dependency provides a reliable healthcheck.
+- Prefer project-scoped resource names. Use `container_name` or a fixed network name only when an actual cross-project integration requires it; fixed names can collide between clones or concurrent instances.
+- Keep changes local to the affected stack and its documentation. Avoid broad image upgrades or unrelated stack redesign.

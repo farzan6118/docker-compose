@@ -1,0 +1,14 @@
+﻿---
+description: YAML, image, environment, and documentation conventions for Compose stacks
+alwaysApply: true
+---
+
+# Compose Conventions
+
+- Use Compose Specification syntax; omit the obsolete top-level `version` key.
+- Quote port mappings and string values where YAML could coerce a value (for example booleans, numbers, or colon-containing strings).
+- Prefer maintained, explicit image tags over `latest` for reproducible examples. Do not change major versions without checking compatibility and documenting the reason.
+- Use `${VARIABLE}` for configurable values and provide a safe `.env.example` when setup requires variables. Never add real secrets to examples.
+- Use readable long-form `volumes` and `networks` declarations when options or external sharing need explanation.
+- Keep comments short and accurate. Remove stale commented-out configurations instead of maintaining a second inactive stack in the YAML.
+- Keep READMEs aligned with actual service names, images, ports, required networks, environment variables, persistence, and commands.

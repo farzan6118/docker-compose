@@ -1,0 +1,14 @@
+﻿---
+description: Compose service configuration, dependency, volume, and network conventions
+alwaysApply: true
+---
+
+# Compose Service Rules
+
+- Give each service a clear stable Compose service key; dependencies should target that key on a shared Docker network.
+- Keep environment configuration under `environment` and secrets configurable. Use `$$` when a variable must expand inside a container shell rather than on the host.
+- Quote host/container port mappings. Publish only ports needed by the host; container-to-container traffic normally needs no `ports` entry.
+- Persist state in a named volume or a documented bind mount. Prefer named volumes for database data unless host-side inspection is a stated use case.
+- Mount configuration read-only when the container only needs to read it. Do not mount host directories that are absent or generated implicitly without explaining setup.
+- Declare external networks at the top-level `networks` mapping, not under `services`. Add an explicit `name` when it must match a network created by another project.
+- Do not use a network merely because a similarly named network exists; ensure the provider and consumer refer to the same actual Docker network.

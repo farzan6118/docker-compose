@@ -1,0 +1,13 @@
+﻿---
+description: Container healthchecks, readiness, and service connectivity
+alwaysApply: true
+---
+
+# Runtime Connectivity
+
+- A healthcheck command must exist in the selected image and test the service's actual readiness, not just whether a shell or TCP port is open.
+- Use commands available in the container image. Do not use host-specific tools such as PowerShell in Linux images.
+- Quote healthcheck commands and escape Compose interpolation with `$$` when the command needs container-side environment expansion.
+- Use `depends_on: condition: service_healthy` when a dependent service cannot initialize until its dependency is ready and a valid healthcheck exists.
+- `depends_on` without a health condition orders startup but does not guarantee readiness. Document required manual startup or retry behavior when no reliable healthcheck is available.
+- Verify that internal connection hosts use Compose service names and that the services share a network.

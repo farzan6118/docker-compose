@@ -1,0 +1,14 @@
+﻿---
+description: Runtime security and local-development safety for Compose stacks
+alwaysApply: true
+---
+
+# Runtime Security
+
+- Treat these stacks as local development examples unless a README explicitly documents production hardening.
+- Never commit usable passwords, access tokens, private keys, or other real secrets. Use environment substitution and ignored local `.env` files; commit only placeholders in `.env.example`.
+- Avoid weak defaults such as `admin`, `pass`, or `root` when a stack can accept configuration. If retained for quick local evaluation, identify them clearly as disposable examples in the README.
+- Bind host ports to `127.0.0.1` by default when host-only access is sufficient. Explain when LAN access is intentional.
+- Do not mount the Docker socket or broad host paths unless required; mount read-only when possible and document the privilege implications.
+- Avoid privileged mode, unnecessary Linux capabilities, and running as root when the image supports safer configuration.
+- Do not describe a development mode, plaintext listener, or disabled authentication as production-ready.

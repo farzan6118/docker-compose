@@ -1,0 +1,13 @@
+﻿---
+description: Persistent data and safe handling of Compose volumes
+alwaysApply: true
+---
+
+# Persistence and Data Safety
+
+- Declare named volumes at the top level and attach them explicitly to the service that owns the data.
+- Document bind-mount paths and whether they are created or initialized by the user.
+- Changing volume names, mount targets, database major versions, or initialization variables can make existing data inaccessible or trigger destructive migrations. Inspect the current setup and call out the impact before changing them.
+- Do not run `docker compose down -v`, remove volumes, or delete data directories as part of routine validation.
+- Explain backup expectations and distinguish stopping/removing containers from deleting persistent data.
+- Database initialization environment variables often apply only to an empty data directory; document that behavior where it affects setup.

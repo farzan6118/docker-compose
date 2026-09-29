@@ -1,5 +1,4 @@
-version: "3.9"
-services:
+﻿services:
   elasticsearch:
     container_name: Elasticsearch
     environment:

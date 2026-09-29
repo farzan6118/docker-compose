@@ -1,4 +1,4 @@
-services:
+﻿services:
   nginx:
     image: nginx:alpine
     container_name: nginx-gateway
@@ -10,5 +10,6 @@ services:
     networks:
       - postgres_shared_network
 
+networks:
   postgres_shared_network:
     external: true
