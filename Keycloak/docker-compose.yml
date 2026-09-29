@@ -18,9 +18,9 @@ services:
     networks:
       - shared_network
     volumes:
-      # فولدر Theme سفارشی
+      # Theme
       - ./themes:/opt/keycloak/themes
-      # فولدر Custom SPI ها
+      # Custom SPI
       - ./spi:/opt/keycloak/providers
 
 networks:
