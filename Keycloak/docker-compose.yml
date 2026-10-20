@@ -17,11 +17,13 @@ services:
     restart: unless-stopped
     networks:
       - shared_network
-    volumes:
-      # Theme
+    volumes:  
+      # Custom SPIs
+      - ./spi:/opt/keycloak/spi
+      # Custom Themes
       - ./themes:/opt/keycloak/themes
-      # Custom SPI
-      - ./spi:/opt/keycloak/providers
+      # Custom Providers
+      - ./providers:/opt/keycloak/providers
 
 networks:
   shared_network:

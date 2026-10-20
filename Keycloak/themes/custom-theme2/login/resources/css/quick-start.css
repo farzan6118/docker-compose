@@ -1,0 +1,77 @@
+:root {
+  --quickstart-primary-color-light: #0066cc;
+  --quickstart-primary-color-dark: #0066cc;
+  --quickstart-primary-color: var(--quickstart-primary-color-light);
+  --quickstart-secondary-color-light: #c0c0c0;
+  --quickstart-secondary-color-dark: #c0c0c0;
+  --quickstart-secondary-color: var(--quickstart-secondary-color-light);
+  --quickstart-font-family: inherit;
+  --quickstart-heading-font-family: inherit;
+  --quickstart-logo-url: none;
+  --quickstart-bg-logo-url: none;
+  --quickstart-logo-height: 63px;
+  --quickstart-logo-width: 300px;
+  --quickstart-text-primary-light: #151515;
+  --quickstart-text-primary-dark: #f0f0f0;
+  --quickstart-text-secondary-light: #4f5255;
+  --quickstart-text-secondary-dark: #d2d2d2;
+  --quickstart-bg-color-light: transparent;
+  --quickstart-bg-color-dark: transparent;
+  --quickstart-bg-color: var(--quickstart-bg-color-light);
+  --quickstart-bg-image: none;
+  --quickstart-border-radius: 8px;
+  --quickstart-card-shadow: none;
+}
+
+html.pf-v5-theme-dark,
+html.kcDarkModeClass {
+  --quickstart-primary-color: var(--quickstart-primary-color-dark);
+  --quickstart-secondary-color: var(--quickstart-secondary-color-dark);
+  --quickstart-bg-color: var(--quickstart-bg-color-dark);
+}
+
+:root,
+html:not(.kcDarkModeClass) body:not(.kcDarkModeClass),
+html:not(.kcDarkModeClass) body#keycloak-bg:not(.kcDarkModeClass) {
+  --quickstart-primary-color: #2fa4e7;
+  --quickstart-secondary-color: #e9ecef;
+  --quickstart-primary-h: 201.85deg;
+  --quickstart-primary-s: 79.31%;
+  --quickstart-primary-l: 54.51%;
+  --quickstart-primary-invert-l: 4%;
+  --quickstart-secondary-h: 210deg;
+  --quickstart-secondary-s: 15.79%;
+  --quickstart-secondary-l: 92.55%;
+  --quickstart-secondary-invert-l: 4%;
+  --quickstart-font-family: var(--bulma-family-primary);
+  --quickstart-heading-font-family: var(--bulma-family-primary);
+  --quickstart-gradient-bg-default: linear-gradient(135deg, #2fa4e7 0%, #e9ecef 100%);
+  /* @kte:border-radius=rounded */
+  --quickstart-border-radius: 8px;
+  /* @kte:card-shadow=subtle */
+  --quickstart-card-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
+
+html.kcDarkModeClass,
+html.kcDarkModeClass body,
+html.kcDarkModeClass body#keycloak-bg,
+body.kcDarkModeClass,
+body#keycloak-bg.kcDarkModeClass {
+  --quickstart-primary-color: #0066cc;
+  --quickstart-secondary-color: #c0c0c0;
+  --quickstart-primary-h: 210deg;
+  --quickstart-primary-s: 100%;
+  --quickstart-primary-l: 40%;
+  --quickstart-primary-invert-l: 100%;
+  --quickstart-secondary-h: 0deg;
+  --quickstart-secondary-s: 0%;
+  --quickstart-secondary-l: 75.29%;
+  --quickstart-secondary-invert-l: 4%;
+  --quickstart-font-family: var(--bulma-family-primary);
+  --quickstart-heading-font-family: var(--bulma-family-primary);
+  --quickstart-gradient-bg-default: linear-gradient(135deg, #0066cc 0%, #c0c0c0 100%);
+  /* @kte:border-radius=rounded */
+  --quickstart-border-radius: 8px;
+  /* @kte:card-shadow=subtle */
+  --quickstart-card-shadow: 0 2px 8px rgba(0,0,0,0.10);
+}
