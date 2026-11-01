@@ -1,7 +1,7 @@
 ﻿services:
   postgres:
     container_name: postgresql
-    image: postgres:16.3-alpine3.18
+    image: postgres:17.11-alpine3.23
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: pass
@@ -9,13 +9,13 @@
     ports:
       - "5432:5432"
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - shared_network
       - postgres_shared_network
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -U user" ]
+      test: [ "CMD-SHELL", "pg_isready -U user -d postgres" ]
       interval: 30s
       timeout: 10s
       retries: 5

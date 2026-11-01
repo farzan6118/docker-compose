@@ -1,6 +1,6 @@
 ﻿# PostgreSQL
 
-Runs PostgreSQL `16.3-alpine3.18` with the `user` account and a bind-mounted `./postgres_data` data directory.
+Runs PostgreSQL `17.11-alpine3.23` with the `user` account and a bind-mounted `./postgres_data` data directory.
 
 ## Run
 
