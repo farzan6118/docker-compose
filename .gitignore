@@ -83,7 +83,7 @@ kafka/zookeeper_data/
 # ----------------------------
 # RabbitMQ
 # ----------------------------
-extra/rabbitmq/rabbitmq_data
+extra/rabbitmq/rabbitmq_data/
 
 
 # ----------------------------
@@ -95,13 +95,31 @@ extra/rabbitmq/rabbitmq_data
 # ----------------------------
 # wordpress
 # ----------------------------
-extra/wordpress/wordpress_data
+extra/wordpress/wordpress_data/
 
 
 # ----------------------------
 # n8n
 # ----------------------------
 extra/n8n/n8n-data/
+
+
+# ----------------------------
+# Other extra service bind-mounted runtime data
+# ----------------------------
+extra/camunda/camunda_data/
+extra/cassandra/cassandra_data/
+extra/elasticstack/Elasticsearch/elastic_data/
+extra/elasticstack/Elasticsearch/elastic_config/
+extra/elasticstack/elastic/elastic-data/
+
+
+# ----------------------------
+# Local service environment files
+# ----------------------------
+extra/**/.env
+extra/**/.env.*
+!extra/**/.env.example
 
 
 # ----------------------------
