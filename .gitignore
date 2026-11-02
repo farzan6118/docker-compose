@@ -83,19 +83,25 @@ kafka/zookeeper_data/
 # ----------------------------
 # RabbitMQ
 # ----------------------------
-rabbitmq/rabbitmq_data/
+extra/rabbitmq/rabbitmq_data
 
 
 # ----------------------------
 # Zipkin
 # ----------------------------
-zipkin/
+# zipkin/
+
+
+# ----------------------------
+# wordpress
+# ----------------------------
+extra/wordpress/wordpress_data
 
 
 # ----------------------------
 # n8n
 # ----------------------------
-n8n/n8n-data/
+extra/n8n/n8n-data/
 
 
 # ----------------------------

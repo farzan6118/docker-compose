@@ -1,29 +1,30 @@
 services:
   mysql:
     container_name: mysql
-    image: mysql:8.0.27
+    image: mysql:9.7.4
     environment:
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: my_database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
     ports:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
-      - mysql_shared_network
+      - shared_network
     restart: unless-stopped
     healthcheck:
-      test: [ "CMD-SHELL", "mysqladmin ping -u root -p$$MYSQL_ROOT_PASSWORD || exit 1" ]
-      interval: 30s
-      timeout: 10s
+      test: [ "CMD-SHELL", "mysqladmin ping -h 127.0.0.1 -u root -p$$MYSQL_ROOT_PASSWORD" ]
+      interval: 10s
+      timeout: 5s
       retries: 5
+      start_period: 30s
 
 volumes:
   mysql_data:
 
-
 networks:
-  mysql_shared_network:
-    name: mysql_shared_network
-    driver: bridge
+  shared_network:
+    external: true
+    name: shared_network
