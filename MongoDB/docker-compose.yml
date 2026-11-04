@@ -1,7 +1,7 @@
 ﻿services:
   mongo:
     container_name: mongodb
-    image: mongo:8.0.10
+    image: mongo:9.0.4
     environment:
       MONGO_INITDB_ROOT_USERNAME: user
       MONGO_INITDB_ROOT_PASSWORD: pass

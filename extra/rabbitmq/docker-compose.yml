@@ -1,7 +1,7 @@
 services:
   rabbitmq:
     container_name: RabbitMQ
-    image: rabbitmq:4.2.0-management-alpine
+    image: rabbitmq:4.3.7-management-alpine
     environment:
       - RABBITMQ_DEFAULT_USER=user
       - RABBITMQ_DEFAULT_PASS=pass

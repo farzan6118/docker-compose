@@ -4,7 +4,7 @@ Runs the Nginx Alpine image as `nginx-gateway`, publishes host port `8888` to co
 
 ## Prerequisites
 
-The stack joins the external `postgres_shared_network`. Start PostgreSQL first so that network exists.
+The stack joins the external `shared_network`. Start PostgreSQL first so that network exists.
 
 ## Run
 

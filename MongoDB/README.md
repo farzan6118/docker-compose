@@ -1,6 +1,6 @@
 ﻿# MongoDB
 
-Runs MongoDB `8.0.10` with a root account and persistent data in the `mongo_data` named volume. The healthcheck authenticates and pings MongoDB using `mongosh` from inside the Linux container.
+Runs MongoDB `9.0.4` with a root account and persistent data in the `mongo_data` named volume. The healthcheck authenticates and pings MongoDB using `mongosh` from inside the Linux container.
 
 ## Run
 
