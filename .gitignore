@@ -77,7 +77,7 @@ mailpit/data/
 # Kafka
 # ----------------------------
 kafka/kafka_data/
-kafka/zookeeper_data/
+!/kafka/.env
 
 
 # ----------------------------
