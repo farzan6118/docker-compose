@@ -77,7 +77,6 @@ mailpit/data/
 # Kafka
 # ----------------------------
 kafka/kafka_data/
-!/kafka/.env
 
 
 # ----------------------------
@@ -120,7 +119,7 @@ extra/elasticstack/elastic/elastic-data/
 extra/**/.env
 extra/**/.env.*
 !extra/**/.env.example
-
+!/kafka/.env
 
 # ----------------------------
 # Elasticsearch
@@ -170,3 +169,4 @@ logs/
 .env
 .env.*
 !.env.example
+!/kafka/.env
