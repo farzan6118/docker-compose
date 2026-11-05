@@ -170,3 +170,4 @@ logs/
 .env.*
 !.env.example
 !/kafka/.env
+/extra/rabbitmq/rabbitmq_data
