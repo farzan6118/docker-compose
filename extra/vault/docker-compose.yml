@@ -5,8 +5,13 @@ services:
     ports:
       - "8200:8200"
     restart: unless-stopped
+    # Docker-created named volumes are root-owned; run as root so file storage is writable.
+    user: "0:0"
+    environment:
+      # The image attempts to set IPC_LOCK capability; local Docker Desktop may lack setcap.
+      SKIP_SETCAP: "1"
     volumes:
-      - vault_data:/vault/data
+      - vault_data:/vault/file
       - ./config/vault.hcl:/vault/config/vault.hcl:ro
     networks:
       - shared_network

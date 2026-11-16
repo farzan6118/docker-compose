@@ -1,8 +1,10 @@
 # Vault
 
-Runs HashiCorp Vault with the file storage backend. Vault data is stored in the Docker-managed `vault_vault_data` named volume mounted at `/vault/data`.
+Runs HashiCorp Vault with the file storage backend. Vault data is stored in the Docker-managed `vault_vault_data` named volume mounted at `/vault/file`.
 
 The Compose file pins `hashicorp/vault:2.2.0`.
+
+Compose starts the image entrypoint as root so it can set ownership on the mounted storage, then the entrypoint drops privileges to the Vault user. `SKIP_SETCAP=1` avoids an optional capability setup that may fail on Docker Desktop; the supplied config has `disable_mlock = true`.
 
 ## Start
 
