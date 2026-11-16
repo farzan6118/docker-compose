@@ -20,6 +20,10 @@ docker compose -f postgres/docker-compose.yml logs -f
 
 Stop it with `docker compose -f postgres/docker-compose.yml down`. Persistent named volumes remain unless `-v` is added. Review the stack README and `.env` requirements before starting it. Commands can also be run from inside the stack directory as `docker compose up -d`.
 
+### Vault persistence
+
+The Vault stack in `extra/vault` uses file storage in the Docker-managed `vault_vault_data` named volume. Running `docker compose down` and then `up -d` preserves Vault's data; `docker compose down -v` deletes it. On first startup, initialize Vault and securely save the unseal keys and initial root token. Vault starts sealed and must be unsealed after each restart unless auto-unseal is configured. See `extra/vault/README.md` for commands.
+
 ## Layout
 
 - Root directories: Kafka, Keycloak, MinIO, MongoDB, PostgreSQL, Redis, and SQL Server

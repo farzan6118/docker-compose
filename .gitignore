@@ -66,7 +66,9 @@ minio/templates/
 # ----------------------------
 # Vault
 # ----------------------------
-vault/vault_data/
+# Vault uses a Docker-managed named volume (vault_vault_data), not a bind mount.
+# Ignore this path only if switching to a local bind-mounted data directory.
+# extra/vault/vault_data/
 
 # ----------------------------
 # Mailpit

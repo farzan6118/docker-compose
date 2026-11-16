@@ -1,27 +1,21 @@
 services:
   vault:
     container_name: vault
-    image: hashicorp/vault:1.19.0
+    image: hashicorp/vault:2.2.0
     ports:
       - "8200:8200"
     restart: unless-stopped
-    environment:
-      - VAULT_DEV_ROOT_TOKEN_ID=root
-      # - VAULT_ADDR=http://0.0.0.0:8200              ## for production
     volumes:
       - vault_data:/vault/data
-      # - ./config/vault.hcl:/vault/config/vault.hcl  ## for production
+      - ./config/vault.hcl:/vault/config/vault.hcl:ro
     networks:
-      - postgres_shared_network
-    # cap_add:                                        ## for production
-    #   - IPC_LOCK
-    # command: vault server -config=/vault/config/vault.hcl
-    # user: root
+      - shared_network
+    command: vault server -config=/vault/config/vault.hcl
 
 volumes:
   vault_data:
 
-
 networks:
-  postgres_shared_network:
+  shared_network:
     external: true
+    name: shared_network
