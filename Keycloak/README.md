@@ -1,2 +1,2 @@
 ## docker-compose
-quay.io/keycloak/keycloak:26.8.1
+quay.io/keycloak/keycloak:26.8.2
